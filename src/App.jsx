@@ -345,7 +345,7 @@ export default function App() {
         />
         {content}
       </main>
-      <footer className="bg-green-950 h-10"></footer>
+      <footer className="bg-green-950 h-10">Beñat Sagarzazu, Yuyuan Jiang y Aritz Flores; 2025 ©</footer>
     </>
   );
 }

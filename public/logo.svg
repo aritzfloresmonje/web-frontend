@@ -1,0 +1,14 @@
+
+<svg width="200" height="80" viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
+  <g fill="none" fill-rule="evenodd">
+    <rect width="200" height="80" fill="transparent"/>
+    <g transform="translate(10, 10)">
+      <rect x="0" y="0" width="50" height="40" rx="8" fill="#32CD32"/>
+      <polygon points="12,40 12,30 0,40" fill="#32CD32"/>
+      <circle cx="14" cy="20" r="4" fill="white"/>
+      <circle cx="25" cy="20" r="4" fill="white"/>
+      <circle cx="36" cy="20" r="4" fill="white"/>
+    </g>
+    <text x="70" y="38" font-family="Arial, sans-serif" font-size="32" fill="white">Chat</text>
+  </g>
+</svg>

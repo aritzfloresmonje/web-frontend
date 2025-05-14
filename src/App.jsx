@@ -28,7 +28,7 @@ export default function App() {
   // Load the users from the database
   useEffect(() => {
     axios
-      .get(`${process.env.DB_URL}/users`)
+      .get(`${process.env.BACKEND_URL}/users`)
       .then((response) =>
         setUsersState((prevState) => {
           return { ...prevState, users: [...response.data] };
@@ -50,7 +50,7 @@ export default function App() {
 
   function handleCreateChat(otherUser, chatName) {
     axios
-      .post(`${process.env.DB_URL}/chats`, {
+      .post(`${process.env.BACKEND_URL}/chats`, {
         chatName: chatName,
         users: [sessionStorage.getItem("username"), otherUser],
       })
@@ -90,7 +90,7 @@ export default function App() {
 
   function handleDeleteChat() {
     axios
-      .delete(`${process.env.DB_URL}/chats/${chatsState.selectedChatId}`)
+      .delete(`${process.env.BACKEND_URL}/chats/${chatsState.selectedChatId}`)
       .then((response) => {
         setChatsState((prevState) => {
           const chatToDelete = prevState.chats.find(
@@ -123,7 +123,7 @@ export default function App() {
     wsocketRef.current.send(JSON.stringify({ type: "msg", sender: senderUsername, receiver: otherUser, content: message }));
 
     axios
-      .post(`${process.env.DB_URL}/chats/${chatsState.selectedChatId}`, {
+      .post(`${process.env.BACKEND_URL}/chats/${chatsState.selectedChatId}`, {
         sender: senderUsername,
         content: message,
       })
@@ -148,7 +148,7 @@ export default function App() {
   }
 
   function openWS(username) {
-    const socket = new WebSocket(`${process.env.WS_URL}`);
+    const socket = new WebSocket(`${process.env.BACKEND_URL}`);
 
     socket.onopen = () => {
       socket.send(JSON.stringify({ type: "connect", username: username }));
@@ -254,7 +254,7 @@ export default function App() {
       openWS(enteredUsername);
 
       axios
-        .get(`${process.env.DB_URL}/chats/${enteredUsername}`)
+        .get(`${process.env.BACKEND_URL}/chats/${enteredUsername}`)
         .then((response) => {
           const enteredUser = findUser(enteredUsername);
           sessionStorage.setItem("username", enteredUsername);
